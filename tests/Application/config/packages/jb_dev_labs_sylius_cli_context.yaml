@@ -1,0 +1,3 @@
+jb_dev_labs_sylius_cli_context:
+    include_command:
+        - JbDevLabs\Tests\SyliusCliContextPlugin\Application\Command\OtherCommand

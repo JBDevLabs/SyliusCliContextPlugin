@@ -1,0 +1,29 @@
+/public/assets
+/public/css
+/public/js
+/public/media/*
+!/public/media/image/
+/public/media/image/*
+!/public/media/image/.gitignore
+
+
+
+###> symfony/framework-bundle ###
+/.env.*.local
+/.env.local
+/.env.local.php
+/public/bundles
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> symfony/webpack-encore-bundle ###
+/public/build
+/node_modules
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
