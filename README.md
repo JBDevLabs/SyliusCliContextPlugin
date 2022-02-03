@@ -134,6 +134,10 @@ jb_dev_labs_sylius_cli_context:
 
 ```
 
+## Usage programatically
+
+See [the documentation](docs/define_channel_manually.md)
+
 ## Contributor Installation (docker)
 
 1. Clone this project
