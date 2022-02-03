@@ -23,9 +23,7 @@ This Sylius plugin allows you to load the channel into the `ChannelContext` on `
 
 ## Installation
 
-> DEV Note : add the repository URL in your `composer.json` file before install. This project will be released soon.
-
-Run the command `composer require jbdevlabs/sylius-cli-context-plugin`
+Run the command `composer require jbdevlabs/sylius-cli-context-plugin dev-main`
 
 ## Extends the Sylius Channel Repository
 
