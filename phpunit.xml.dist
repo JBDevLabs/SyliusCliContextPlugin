@@ -12,7 +12,7 @@
 
     <php>
         <ini name="error_reporting" value="-1" />
-
+        <server name="KERNEL_CLASS" value="JbDevLabs\Tests\SyliusCliContextPlugin\Application\Kernel" />
         <server name="KERNEL_CLASS_PATH" value="/tests/Application/AppKernel.php" />
         <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true" />
 
