@@ -8,6 +8,19 @@
 
 <p align="center">This plugin provide a default channel context for your Symfony Command.</p>
 
+When Sylius load a resource implements `Sylius\Component\Resource\Model\TranslatableInterface`, a Doctrine`postLoad` event listener defines the default local and the current locale into the loaded object.
+The current local is determined from the current HTTP request and the `ChannelContext`.
+
+In HTTP context, the current channel into `ChannelContext` is defined from hostname.
+
+In Console context (cli), we have no HTTP request and the `ChannelContext` is empty. When you load a translatable resource, the channel context will load the first channel after running the `findAll` function on `ChannelRepository`.
+
+But the `ChannelContext` will execute the `findAll` function for each resource loaded. The more you load resource more your command consume more memory and use more CPU resources.
+
+Know issues: [Performance issue in cli commands: channel db request after each translatable entity postLoad event](https://github.com/Sylius/Sylius/issues/9296) and [Multiple channels with php-cli is not possible](https://github.com/Sylius/Sylius/issues/9987)
+
+This Sylius plugin allows you to load the channel into the `ChannelContext` on `ConsoleCommandEvent` event. The `findAll` function on `ChannelRepository` will never be executed by `ChannelContext` and you preserve your performances.
+
 ## Installation
 
 > DEV Note : add the repository URL in your `composer.json` file before install. This project will be released soon.
