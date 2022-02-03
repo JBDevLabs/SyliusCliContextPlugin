@@ -43,13 +43,16 @@ final class CommandDefineContextSubscriber implements EventSubscriberInterface
 
     public function setChannel(ConsoleCommandEvent $event): void
     {
+        $command = $event->getCommand();
+        $includeCommand = is_array($this->config['include_command']) ? $this->config['include_command'] : [];
         if (
-            $event->getCommand() instanceof CliContextAwareInterface === false &&
-            in_array(get_class($event->getCommand()), $this->config['include_command']) === false
+            $command instanceof CliContextAwareInterface === false &&
+            ($command === null || in_array(get_class($command), $includeCommand) === false)
         ) {
             return;
         }
 
+        /** @var string|null $channelCode */
         $channelCode = $this->config['channel_code'] ?? null;
         $channel = $channelCode ? $this->channelProvider->loadChannelFromCode($channelCode) : $this->channelProvider->loadFirstChannel();
         if ($channel === null) {

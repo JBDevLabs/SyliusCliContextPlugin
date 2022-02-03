@@ -20,6 +20,7 @@ final class JbDevLabsSyliusCliContextExtension extends Extension
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
 
+        /** @var array<int, string> $classes */
         $classes = $config['include_command'] ?? [];
         foreach ($classes as $classname) {
             if (class_exists($classname) === false) {

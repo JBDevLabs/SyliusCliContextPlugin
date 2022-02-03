@@ -33,14 +33,14 @@ final class CommandRouterHostContextSubscriber implements EventSubscriberInterfa
     /**
      * @inheritDoc
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             ConsoleCommandEvent::class => ['setHostFromChannel', 9],
         ];
     }
 
-    public function setHostFromChannel(ConsoleCommandEvent $event)
+    public function setHostFromChannel(ConsoleCommandEvent $event): void
     {
         try {
             $channel = $this->channelContext->getChannel();

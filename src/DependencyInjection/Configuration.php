@@ -10,7 +10,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 final class Configuration implements ConfigurationInterface
 {
     /**
-     * @psalm-suppress UnusedVariable
+     * @psalm-suppress UnusedVariable, PossiblyUndefinedMethod, MixedMethodCall
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
