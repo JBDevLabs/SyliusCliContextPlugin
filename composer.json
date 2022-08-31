@@ -47,7 +47,8 @@
         "allow-plugins": {
             "symfony/thanks": false,
             "dealerdirect/phpcodesniffer-composer-installer": false,
-            "phpstan/extension-installer": false
+            "phpstan/extension-installer": false,
+            "symfony/flex": true
         }
     },
     "extra": {
