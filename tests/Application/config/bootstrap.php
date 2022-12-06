@@ -15,7 +15,7 @@ if (is_array($env = @include dirname(__DIR__) . '/.env.local.php')) {
     throw new RuntimeException('Please run "composer require symfony/dotenv" to load the ".env" files configuring the application.');
 } else {
     // load all the .env files
-    if (method_exists(Dotenv,'usePutenv')) {
+    if (method_exists(DotEnv::class, 'usePutenv')) {
         $dotEnv = new DotEnv();
         $dotEnv->usePutenv(true);
     } else {
