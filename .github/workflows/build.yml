@@ -139,7 +139,10 @@ jobs:
                 name: Replace swiftmailer-bundle by flysystem-bundle
                 if: matrix.sylius == '~1.12.0'
                 run: sed -i 's/Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle/League\\FlysystemBundle\\FlysystemBundle/g' tests/Application/config/bundles.php
-
+            -
+                name: Remove swiftmailer config
+                if: matrix.sylius == '~1.12.0'
+                run: rm tests/Application/config/packages/swiftmailer.yaml tests/Application/config/packages/*/swiftmailer.yaml
             -
                 name: Install PHP dependencies
                 run: composer install --no-interaction
