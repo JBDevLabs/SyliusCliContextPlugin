@@ -38,7 +38,8 @@
         "symfony/intl": "^4.4 || ^5.4 || ^6.0",
         "symfony/web-profiler-bundle": "^4.4 || ^5.4 || ^6.0",
         "symfony/webpack-encore-bundle": "^1.12",
-        "vimeo/psalm": "4.7.1",
+        "swiftmailer/swiftmailer": "^6.3",
+        "vimeo/psalm": "4.7.1||^5.0",
         "polishsymfonycommunity/symfony-mocker-container": "^1.0"
     },
     "config": {
