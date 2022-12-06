@@ -34,7 +34,7 @@ final class JbDevLabsSyliusCliContextExtension extends Extension
         $container->setParameter('jb_dev_labs_sylius_cli_context.config', $config);
 
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
-        /** @psalm-suppress ReservedWord */
+
         $loader->load('services.php');
     }
 
