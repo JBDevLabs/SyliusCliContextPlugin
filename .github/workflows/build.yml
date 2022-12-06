@@ -136,9 +136,9 @@ jobs:
                 if: matrix.sylius == '~1.12.0'
                 run: composer remove "friendsofsymfony/oauth-server-bundle" --dev --no-update --no-scripts --no-interaction
             -
-                name: Require swiftmailer
+                name: Require swiftmailer-bundle
                 if: matrix.sylius == '~1.12.0'
-                run: composer require "swiftmailer/swiftmailer:^6.3" --no-update --no-scripts --no-interaction
+                run: composer require "symfony/swiftmailer-bundle:^3.5" --no-update --no-scripts --no-interaction
 
             -
                 name: Install PHP dependencies
