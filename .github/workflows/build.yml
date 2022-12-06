@@ -135,20 +135,20 @@ jobs:
                 name: Remove FOS OAuth Server
                 if: matrix.sylius == '~1.12.0'
                 run: composer remove "friendsofsymfony/oauth-server-bundle" --dev --no-update --no-scripts --no-interaction
-            -
-                name: Replace swiftmailer-bundle by flysystem-bundle and add calendar
-                if: matrix.sylius == '~1.12.0'
-                run: |
-                    sed -i 's/Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle/League\\FlysystemBundle\\FlysystemBundle/g' tests/Application/config/bundles.php
-                    sed -i 's/];/Sylius\\Calendar\\SyliusCalendarBundle::class => ['"'"'all'"'"' => true],];/g' tests/Application/config/bundles.php
-            -
-                name: Remove swiftmailer config
-                if: matrix.sylius == '~1.12.0'
-                run: rm tests/Application/config/packages/swiftmailer.yaml tests/Application/config/packages/*/swiftmailer.yaml
-            -
-                name: change session config
-                if: matrix.sylius == '~1.12.0'
-                run: cp -rvf tests/Application/config_1.12/* tests/Application/config/ 
+#            -
+#                name: Replace swiftmailer-bundle by flysystem-bundle and add calendar
+#                if: matrix.sylius == '~1.12.0'
+#                run: |
+#                    sed -i 's/Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle/League\\FlysystemBundle\\FlysystemBundle/g' tests/Application/config/bundles.php
+#                    sed -i 's/];/Sylius\\Calendar\\SyliusCalendarBundle::class => ['"'"'all'"'"' => true],];/g' tests/Application/config/bundles.php
+#            -
+#                name: Remove swiftmailer config
+#                if: matrix.sylius == '~1.12.0'
+#                run: rm tests/Application/config/packages/swiftmailer.yaml tests/Application/config/packages/*/swiftmailer.yaml
+#            -
+#                name: change session config
+#                if: matrix.sylius == '~1.12.0'
+#                run: cp -rvf tests/Application/config_1.12/* tests/Application/config/ 
                 
             -
                 name: Install PHP dependencies
