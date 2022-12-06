@@ -126,7 +126,7 @@ jobs:
                     composer global config --no-plugins allow-plugins.symfony/flex true
                     composer global require --no-progress --no-scripts --no-plugins "symfony/flex:^1.10"
                     composer config extra.symfony.require "${{ matrix.symfony }}"
-                    composer config config.platform.php "${{ matrix.php }}"
+                    composer config platform.php "${{ matrix.php }}"
 
             -
                 name: Restrict Sylius version
