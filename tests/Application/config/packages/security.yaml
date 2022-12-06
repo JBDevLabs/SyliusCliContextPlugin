@@ -1,0 +1,4 @@
+security:
+    firewalls:
+        main:
+          security: false
