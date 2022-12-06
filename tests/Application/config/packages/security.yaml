@@ -1,8 +1,0 @@
-security:
-    firewalls:
-        main:
-          security: false
-        admin:
-          security: false
-        shop:
-          security: false

@@ -136,9 +136,11 @@ jobs:
                 if: matrix.sylius == '~1.12.0'
                 run: composer remove "friendsofsymfony/oauth-server-bundle" --dev --no-update --no-scripts --no-interaction
             -
-                name: Replace swiftmailer-bundle by flysystem-bundle
+                name: Replace swiftmailer-bundle by flysystem-bundle and add calendar
                 if: matrix.sylius == '~1.12.0'
-                run: sed -i 's/Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle/League\\FlysystemBundle\\FlysystemBundle/g' tests/Application/config/bundles.php
+                run: |
+                    sed -i 's/Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle/League\\FlysystemBundle\\FlysystemBundle/g' tests/Application/config/bundles.php
+                    sed -i 's/];/Sylius\\Calendar\\SyliusCalendarBundle::class => ['"'"'all'"'"' => true],];/g' tests/Application/config/bundles.php
             -
                 name: Remove swiftmailer config
                 if: matrix.sylius == '~1.12.0'
@@ -146,9 +148,7 @@ jobs:
             -
                 name: change session config
                 if: matrix.sylius == '~1.12.0'
-                run: | 
-                    sed -i 's/        storage_id:/#        storage_id:/g' tests/Application/config/packages/test/framework.yaml
-                    sed -i 's/#        storage_factory_id:/        storage_factory_id:/g' tests/Application/config/packages/test/framework.yaml
+                run: cp -rvf test/Application/config_1.12/ test/Application/config/ 
                 
             -
                 name: Install PHP dependencies
