@@ -49,7 +49,7 @@ jobs:
 
         env:
             APP_ENV: test
-            DATABASE_URL: "mysql://root:nopassword@127.0.0.1/sylius?serverVersion=mariadb-${{ matrix.mariadb }}"
+            DATABASE_URL: "mysql://root:nopassword@127.0.0.1/sylius?serverVersion=mariadb-${{ matrix.mariadb }}.0"
 
         steps:
             -
