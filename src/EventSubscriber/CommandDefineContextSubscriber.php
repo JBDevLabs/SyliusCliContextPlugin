@@ -18,18 +18,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /** @psalm-suppress UnusedClass */
 final class CommandDefineContextSubscriber implements EventSubscriberInterface
 {
-    private CliChannelContext $cliChannelContext;
-    private array $config;
-    private CliChannelProviderInterface $channelProvider;
 
     public function __construct(
-        CliChannelContext $cliChannelContext,
-        CliChannelProviderInterface $channelProvider,
-        array $config
+        private readonly CliChannelContext $cliChannelContext,
+        private readonly CliChannelProviderInterface $channelProvider,
+        private readonly array $config
     ) {
-        $this->cliChannelContext = $cliChannelContext;
-        $this->config = $config;
-        $this->channelProvider = $channelProvider;
     }
 
     /**

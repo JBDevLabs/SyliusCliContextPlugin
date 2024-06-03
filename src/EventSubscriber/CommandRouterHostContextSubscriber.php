@@ -22,13 +22,12 @@ use Symfony\Component\Routing\RouterInterface;
  */
 final class CommandRouterHostContextSubscriber implements EventSubscriberInterface
 {
-    private ChannelContextInterface $channelContext;
-    private RouterInterface $router;
 
-    public function __construct(CliChannelContext $channelContext, RouterInterface $router)
+    public function __construct(
+        private readonly CliChannelContext $channelContext,
+        private readonly RouterInterface $router
+    )
     {
-        $this->channelContext = $channelContext;
-        $this->router = $router;
     }
 
     /**
