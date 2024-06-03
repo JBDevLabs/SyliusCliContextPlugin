@@ -54,7 +54,7 @@ final class CommandDefineContextSubscriber implements EventSubscriberInterface
 
         /** @var string|null $channelCode */
         $channelCode = $this->config['channel_code'] ?? null;
-        $channel = $channelCode ? $this->channelProvider->loadChannelFromCode($channelCode) : $this->channelProvider->loadFirstChannel();
+        $channel = $channelCode !== null ? $this->channelProvider->loadChannelFromCode($channelCode) : $this->channelProvider->loadFirstChannel();
         if ($channel === null) {
             return;
         }
