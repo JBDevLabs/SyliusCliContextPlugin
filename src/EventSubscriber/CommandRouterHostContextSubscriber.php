@@ -16,8 +16,9 @@ use Symfony\Component\Console\Event\ConsoleCommandEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-/*
+/**
  * Work only if the CliChannelContext has a channel defined.
+ * @psalm-suppress UnusedClass
  */
 final class CommandRouterHostContextSubscriber implements EventSubscriberInterface
 {
@@ -40,7 +41,7 @@ final class CommandRouterHostContextSubscriber implements EventSubscriberInterfa
         ];
     }
 
-    public function setHostFromChannel(ConsoleCommandEvent $event): void
+    public function setHostFromChannel(): void
     {
         try {
             $channel = $this->channelContext->getChannel();

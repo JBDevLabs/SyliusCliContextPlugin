@@ -15,6 +15,7 @@ use JbDevLabs\SyliusCliContextPlugin\Repository\CliChannelProviderInterface;
 use Symfony\Component\Console\Event\ConsoleCommandEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/** @psalm-suppress UnusedClass */
 final class CommandDefineContextSubscriber implements EventSubscriberInterface
 {
     private CliChannelContext $cliChannelContext;
