@@ -14,16 +14,32 @@ on:
 
 jobs:
     tests:
-        runs-on: ubuntu-18.04
-        name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, MySQL ${{ matrix.mysql }}"
+        runs-on: ubuntu-22.04
+        name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, MySQL ${{ matrix.mariadb }}"
+        
+        services:
+            mariadb:
+                image: mariadb:${{ matrix.mariadb }}
+                ports:
+                    - '3306:3306'
+                env:
+                    MYSQL_USER: user
+                    MYSQL_PASSWORD: password
+                    MYSQL_DATABASE: test
+                    MYSQL_ROOT_PASSWORD: nopassword
+                options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
+
         strategy:
             fail-fast: false
             matrix:
-                php: ["8.3", "8.2", "8.1"]
-                symfony: ["^5.4", "^6.4"]
-                sylius: ["~1.11.0", "~1.12.0", "~1.13.0"]
+                php: ["8.2"]
+#                php: ["8.3", "8.2", "8.1"]
+                symfony: ["^6.4"]
+#                symfony: ["^5.4", "^6.4"]
+                sylius: ["~1.13.0"]
+#                sylius: ["~1.11.0", "~1.12.0", "~1.13.0"]
 #                node: ["12.x"]
-                mysql: ["8.0"]
+                mariadb: ["10.11"]
 
                 exclude:
                     -
@@ -33,11 +49,11 @@ jobs:
 
         env:
             APP_ENV: test
-            DATABASE_URL: "mysql://root:root@127.0.0.1/sylius?serverVersion=${{ matrix.mysql }}"
+            DATABASE_URL: "mysql://root:nopassword@127.0.0.1/sylius?serverVersion=mariadb-${{ matrix.mariadb }}"
 
         steps:
             -
-                uses: actions/checkout@v3
+                uses: actions/checkout@v4
 
             -
                 name: Setup PHP
@@ -58,12 +74,6 @@ jobs:
                 name: Shutdown default MySQL
                 run: sudo service mysql stop
 
-            -
-                name: Setup MySQL
-                uses: mirromutth/mysql-action@v1.1
-                with:
-                    mysql version: "${{ matrix.mysql }}"
-                    mysql root password: "root"
 
             -
                 name: Output PHP version for Symfony CLI
@@ -110,7 +120,7 @@ jobs:
                 run: composer require "sylius/sylius:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
             -
                 name: Remove FOS OAuth Server
-                if: matrix.sylius == '~1.12.0'
+                if: matrix.sylius == '~1.12.0' || matrix.sylius == '~1.13.0' 
                 run: composer remove "friendsofsymfony/oauth-server-bundle" --dev --no-update --no-scripts --no-interaction
             -
                 name: Install PHP dependencies
