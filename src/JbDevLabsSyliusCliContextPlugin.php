@@ -7,6 +7,7 @@ namespace JbDevLabs\SyliusCliContextPlugin;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/** @psalm-suppress UnusedClass */
 final class JbDevLabsSyliusCliContextPlugin extends Bundle
 {
     use SyliusPluginTrait;

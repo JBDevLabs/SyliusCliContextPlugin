@@ -11,6 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
+/** @psalm-suppress UnusedClass */
 final class JbDevLabsSyliusCliContextExtension extends Extension
 {
     /**

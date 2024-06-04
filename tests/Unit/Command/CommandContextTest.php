@@ -15,7 +15,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 class CommandContextTest extends KernelTestCase
 {
     /** @dataProvider commandAndResultProvider */
-    public function testExecute(string $commandName, string $result)
+    public function testExecute(string $commandName, string $result): void
     {
         $kernel = self::bootKernel();
         $application = new Application($kernel);
@@ -32,7 +32,7 @@ class CommandContextTest extends KernelTestCase
 
     }
 
-    public function commandAndResultProvider()
+    public function commandAndResultProvider(): array
     {
         return [
             'app:command-without-context' => ['app:command-without-context', 'Channel name: Fashion Web Store'],
@@ -42,7 +42,7 @@ class CommandContextTest extends KernelTestCase
         ];
     }
 
-    public function testExecuteFail()
+    public function testExecuteFail(): void
     {
         $kernel = self::bootKernel();
         $application = new Application($kernel);

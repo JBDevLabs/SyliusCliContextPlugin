@@ -15,20 +15,15 @@ use JbDevLabs\SyliusCliContextPlugin\Repository\CliChannelProviderInterface;
 use Symfony\Component\Console\Event\ConsoleCommandEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/** @psalm-suppress UnusedClass */
 final class CommandDefineContextSubscriber implements EventSubscriberInterface
 {
-    private CliChannelContext $cliChannelContext;
-    private array $config;
-    private CliChannelProviderInterface $channelProvider;
 
     public function __construct(
-        CliChannelContext $cliChannelContext,
-        CliChannelProviderInterface $channelProvider,
-        array $config
+        private readonly CliChannelContext $cliChannelContext,
+        private readonly CliChannelProviderInterface $channelProvider,
+        private readonly array $config
     ) {
-        $this->cliChannelContext = $cliChannelContext;
-        $this->config = $config;
-        $this->channelProvider = $channelProvider;
     }
 
     /**
@@ -54,7 +49,7 @@ final class CommandDefineContextSubscriber implements EventSubscriberInterface
 
         /** @var string|null $channelCode */
         $channelCode = $this->config['channel_code'] ?? null;
-        $channel = $channelCode ? $this->channelProvider->loadChannelFromCode($channelCode) : $this->channelProvider->loadFirstChannel();
+        $channel = $channelCode !== null ? $this->channelProvider->loadChannelFromCode($channelCode) : $this->channelProvider->loadFirstChannel();
         if ($channel === null) {
             return;
         }
