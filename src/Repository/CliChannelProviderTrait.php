@@ -20,6 +20,7 @@ trait CliChannelProviderTrait
         }
         $qb = $this->createQueryBuilder('o');
         $qb->andWhere('o.code = :code')
+            ->setMaxResults(1)
             ->setParameter('code', $code);
 
         return $qb->getQuery()->getOneOrNullResult();
