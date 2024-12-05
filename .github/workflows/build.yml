@@ -153,6 +153,7 @@ jobs:
                 name: Update Webpack version
                 if: matrix.sylius == '~2.0.0'
                 run: composer require "symfony/webpack-encore-bundle:^2.0" --no-update --no-scripts --no-interaction
+
             -
                 name: Remove FOS OAuth Server
                 if: matrix.sylius != '~1.11.0'
