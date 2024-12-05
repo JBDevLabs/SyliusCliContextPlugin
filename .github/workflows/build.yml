@@ -33,11 +33,11 @@ jobs:
             fail-fast: false
             matrix:
 #                php: ["8.2"]
-                php: ["8.3", "8.2", "8.1"]
+                php: ["8.4", "8.3", "8.2", "8.1"]
 #                symfony: ["^6.4"]
-                symfony: ["^5.4", "^6.4"]
+                symfony: ["^5.4", "^6.4", "^7.0"]
 #                sylius: ["~1.13.0"]
-                sylius: ["~1.11.0", "~1.12.0", "~1.13.0"]
+                sylius: ["~1.11.0", "~1.12.0", "~1.13.0", "~1.14.0", "~2.0.0"]
 #                node: ["12.x"]
                 mariadb: ["10.11"]
 
@@ -45,6 +45,21 @@ jobs:
                     -
                         sylius: "~1.11.0"
                         symfony: "^6.4"
+                    -
+                        sylius: "~1.11.0"
+                        symfony: "^7.0"
+                    -
+                        sylius: "~1.12.0"
+                        symfony: "^7.0"
+                    -
+                        sylius: "~1.13.0"
+                        symfony: "^7.0"
+                    -
+                        sylius: "~1.14.0"
+                        symfony: "^7.0"
+                    -
+                        sylius: "~2.0.0"
+                        symfony: "^5.4"
 
 
         env:
