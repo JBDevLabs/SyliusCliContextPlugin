@@ -141,7 +141,7 @@ jobs:
                 run: composer require "sylius/sylius:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
             -
                 name: Remove FOS OAuth Server
-                if: matrix.sylius == '~1.12.0' || matrix.sylius == '~1.13.0' 
+                if: matrix.sylius != '~1.11.0'
                 run: composer remove "friendsofsymfony/oauth-server-bundle" --dev --no-update --no-scripts --no-interaction
             -
                 name: Install PHP dependencies
