@@ -58,8 +58,14 @@ jobs:
                         sylius: "~1.14.0"
                         symfony: "^7.0"
                     -
+                        sylius: "~1.14.0"
+                        symfony: "^5.4"
+                    -
                         sylius: "~2.0.0"
                         symfony: "^5.4"
+                    -
+                        sylius: "~2.0.0"
+                        php: "8.2"
 
 
         env:
