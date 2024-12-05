@@ -1,6 +1,7 @@
 <?php
 
 return [
+    Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle::class => ['all' => true],
     Sonata\BlockBundle\SonataBlockBundle::class => ['all' => true],
     winzou\Bundle\StateMachineBundle\winzouStateMachineBundle::class => ['all' => true],
     BabDev\PagerfantaBundle\BabDevPagerfantaBundle::class => ['all' => true],
