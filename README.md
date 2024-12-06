@@ -140,26 +140,26 @@ See [the documentation](docs/define_channel_manually.md)
 
 ```bash
 $ chmod -Rf 777 tests/Application/var
-$ docker-compose up -d
-$ docker-compose exec php php -d memory_limit=-1 /usr/bin/composer install
-$ docker-compose exec nodejs yarn --cwd tests/Application install
-$ docker-compose exec php tests/Application/bin/console doctrine:database:create --if-not-exists -vvv
-$ docker-compose exec php tests/Application/bin/console doctrine:schema:create -vvv
-$ docker-compose exec php tests/Application/bin/console assets:install tests/Application/public -vvv
-$ docker-compose exec nodejs yarn --cwd tests/Application build
-$ docker-compose exec php tests/Application/bin/console cache:warmup -vvv
-$ docker-compose exec php tests/Application/bin/console sylius:fixtures:load -n
+$ docker compose up -d
+$ docker compose exec php php -d memory_limit=-1 /usr/bin/composer install
+$ docker compose exec nodejs yarn --cwd tests/Application install
+$ docker compose exec php tests/Application/bin/console doctrine:database:create --if-not-exists -vvv
+$ docker compose exec php tests/Application/bin/console doctrine:schema:create -vvv
+$ docker compose exec php tests/Application/bin/console assets:install tests/Application/public -vvv
+$ docker compose exec nodejs yarn --cwd tests/Application build
+$ docker compose exec php tests/Application/bin/console cache:warmup -vvv
+$ docker compose exec php tests/Application/bin/console sylius:fixtures:load -n
 ```
  
 ### Quality tools
 
 ```bash
-$ docker-compose exec php composer validate --ansi --strict
-$ docker-compose exec php vendor/bin/phpstan analyse -c phpstan.neon -l max src/
-$ docker-compose exec php vendor/bin/psalm
-$ docker-compose exec php vendor/bin/phpspec run --ansi -f progress --no-interaction
-$ docker-compose exec php vendor/bin/phpunit --colors=always
-$ docker-compose exec php vendor/bin/behat --profile docker --colors --strict -vvv --no-interaction
+$ docker compose exec php composer validate --ansi --strict
+$ docker compose exec php vendor/bin/phpstan analyse -c phpstan.neon -l max src/
+$ docker compose exec php vendor/bin/psalm
+$ docker compose exec php vendor/bin/phpspec run --ansi -f progress --no-interaction
+$ docker compose exec php vendor/bin/phpunit --colors=always
+$ docker compose exec php vendor/bin/behat --profile docker --colors --strict -vvv --no-interaction
 ``` 
  __ProTip__ use `Makefile` ;)
 
@@ -251,12 +251,12 @@ To be able to setup a plugin's database, remember to configure you database cred
 
     ```bash
     (cd tests/Application && APP_ENV=test bin/console sylius:fixtures:load)
-    (cd tests/Application && APP_ENV=test bin/console server:run -d public)
+    (cd tests/Application && APP_ENV=test symfony server:start --daemon)
     ```
     
 - Using `dev` environment:
 
     ```bash
     (cd tests/Application && APP_ENV=dev bin/console sylius:fixtures:load)
-    (cd tests/Application && APP_ENV=dev bin/console server:run -d public)
+    (cd tests/Application && APP_ENV=dev symfony server:start --daemon)
     ```
