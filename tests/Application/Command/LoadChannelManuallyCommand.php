@@ -11,32 +11,30 @@ namespace JbDevLabs\Tests\SyliusCliContextPlugin\Application\Command;
 
 use JbDevLabs\SyliusCliContextPlugin\CliContext\CliChannelContext;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand('app:change-channel')]
 final class LoadChannelManuallyCommand extends Command
 {
     protected static $defaultName = 'app:change-channel';
-    private CliChannelContext $channelContext;
-    private ChannelRepositoryInterface $channelRepository;
 
-    public function __construct(CliChannelContext $channelContext, ChannelRepositoryInterface $channelRepository)
+    public function __construct(private readonly CliChannelContext $channelContext, private readonly ChannelRepositoryInterface $channelRepository)
     {
         parent::__construct();
-        $this->channelContext = $channelContext;
-        $this->channelRepository = $channelRepository;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->addOption('channel', 'c', InputOption::VALUE_REQUIRED, 'Channel code to use durring the running command',
             null);
     }
 
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $channel = $input->getOption('channel');
 

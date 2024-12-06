@@ -77,7 +77,7 @@ final class Kernel extends BaseKernel
 
     private function isTestEnvironment(): bool
     {
-        return 0 === strpos($this->getEnvironment(), 'test');
+        return str_starts_with($this->getEnvironment(), 'test');
     }
 
     private function loadContainerConfiguration(LoaderInterface $loader, string $confDir): void
@@ -96,7 +96,7 @@ final class Kernel extends BaseKernel
     }
 
     /**
-     * @return BundleInterface[]
+     * @return iterable<BundleInterface>
      */
     private function registerBundlesFromFile(string $bundlesFile): iterable
     {
@@ -109,7 +109,7 @@ final class Kernel extends BaseKernel
     }
 
     /**
-     * @return string[]
+     * @return iterable<string>
      */
     private function getConfigurationDirectories(): iterable
     {

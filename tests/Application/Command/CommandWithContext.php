@@ -10,22 +10,22 @@ namespace JbDevLabs\Tests\SyliusCliContextPlugin\Application\Command;
 
 use JbDevLabs\SyliusCliContextPlugin\Command\CliContextAwareInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'app:command-with-context')]
 final class CommandWithContext extends Command implements CliContextAwareInterface
 {
     protected static $defaultName = 'app:command-with-context';
-    private ChannelContextInterface $channelContext;
 
-    public function __construct(ChannelContextInterface $channelContext)
+    public function __construct(private readonly ChannelContextInterface $channelContext)
     {
         parent::__construct();
-        $this->channelContext = $channelContext;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $channel = $this->channelContext->getChannel();
         $output->writeln('Channel name: ' . $channel->getName());

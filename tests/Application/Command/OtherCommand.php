@@ -10,21 +10,22 @@ namespace JbDevLabs\Tests\SyliusCliContextPlugin\Application\Command;
 
 
 use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand('app:other-command')]
 final class OtherCommand extends Command
 {
     protected static $defaultName = 'app:other-command';
 
-    public function __construct(ChannelContextInterface $channelContext)
+    public function __construct(private readonly ChannelContextInterface $channelContext)
     {
         parent::__construct();
-        $this->channelContext = $channelContext;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $channel = $this->channelContext->getChannel();
         $output->writeln('Channel name: ' . $channel->getName());

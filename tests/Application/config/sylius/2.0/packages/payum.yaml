@@ -1,0 +1,6 @@
+payum:
+    security:
+        token_storage:
+            Sylius\Bundle\PayumBundle\Model\PaymentSecurityToken:
+                doctrine:
+                    driver: orm
