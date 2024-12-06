@@ -1,3 +1,10 @@
+# Version 1.4.0
+
+* Bump minimum requirement to Sylius 1.12.
+* Add support Sylius 1.14
+* Add support Sylius 2.0
+* Add support Symfony 7.0+
+
 # Version 1.3.0
 
 * Add compatibility to Sylius 1.13.
