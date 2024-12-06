@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@SyliusPayumBundle/Resources/config/app/config.yaml" }
