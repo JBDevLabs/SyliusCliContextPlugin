@@ -29,6 +29,7 @@ final class CommandDefineContextSubscriber implements EventSubscriberInterface
     /**
      * @inheritDoc
      */
+    #[\Override]
     public static function getSubscribedEvents(): array
     {
         return [

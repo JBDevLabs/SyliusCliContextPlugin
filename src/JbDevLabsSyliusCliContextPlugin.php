@@ -12,6 +12,7 @@ final class JbDevLabsSyliusCliContextPlugin extends Bundle
 {
     use SyliusPluginTrait;
 
+    #[\Override]
     public function getPath(): string
     {
         return \dirname(__DIR__);

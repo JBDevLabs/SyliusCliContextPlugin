@@ -17,6 +17,7 @@ final class JbDevLabsSyliusCliContextExtension extends Extension
     /**
      * @psalm-suppress UnusedVariable
      */
+    #[\Override]
     public function load(array $configs, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
@@ -39,6 +40,7 @@ final class JbDevLabsSyliusCliContextExtension extends Extension
         $loader->load('services.php');
     }
 
+    #[\Override]
     public function getConfiguration(array $config, ContainerBuilder $container): ConfigurationInterface
     {
         return new Configuration();

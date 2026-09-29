@@ -1,0 +1,2 @@
+parameters:
+    sylius.security.new_api_route: '%sylius.security.api_shop_regex%'

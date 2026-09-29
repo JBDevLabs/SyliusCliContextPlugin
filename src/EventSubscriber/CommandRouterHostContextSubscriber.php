@@ -33,6 +33,7 @@ final class CommandRouterHostContextSubscriber implements EventSubscriberInterfa
     /**
      * @inheritDoc
      */
+    #[\Override]
     public static function getSubscribedEvents(): array
     {
         return [

@@ -20,6 +20,7 @@ final class CliChannelContext implements ChannelContextInterface, ChannelContext
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function getChannel(): ChannelInterface
     {
         if ($this->channel === null || php_sapi_name() !== 'cli') {
@@ -28,6 +29,7 @@ final class CliChannelContext implements ChannelContextInterface, ChannelContext
         return $this->channel;
     }
 
+    #[\Override]
     public function setChannel(ChannelInterface $channel): void
     {
         $this->channel = $channel;

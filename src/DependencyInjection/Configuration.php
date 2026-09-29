@@ -13,6 +13,7 @@ final class Configuration implements ConfigurationInterface
     /**
      * @psalm-suppress UnusedVariable, PossiblyUndefinedMethod, MixedMethodCall
      */
+    #[\Override]
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('jb_dev_labs_sylius_cli_context');
