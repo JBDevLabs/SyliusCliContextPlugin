@@ -11,6 +11,9 @@
         "php": ">=8.2",
         "sylius/sylius": "^2.0"
     },
+    "conflict": {
+        "doctrine/orm": "2.20.7 || 3.5.3 || 3.6.8 || >=3.7"
+    },
     "require-dev": {
         "behat/behat": "^3.6.1",
         "behat/mink-selenium2-driver": "^1.4",
